@@ -5,7 +5,6 @@ vim.keymap.set("n", "<leader>wq", "<cmd>q<cr><esc>", { desc = "Close pane" })
 vim.keymap.set("n", "<leader>qq", "<cmd>qa<cr><esc>", { desc = "Quit" })
 
 -- clipboard
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])
-vim.keymap.set("n", "<leader>p", [["+p]])
-vim.keymap.set("n", "<leader>P", [["+P]])
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "System yank" })
+vim.keymap.set("n", "<leader>p", [["+p]], { desc = "System paste" })
+
