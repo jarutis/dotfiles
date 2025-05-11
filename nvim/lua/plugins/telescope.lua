@@ -7,7 +7,11 @@ return {
 			"jonarrien/telescope-cmdline.nvim",
 		},
 		keys = {
-			{ "<leader><leader>", "<cmd>Telescope cmdline<cr>", desc = "Cmdline" },
+			{ "<leader>x", "<cmd>Telescope cmdline<cr>", desc = "Cmdline" },
+			{ "<leader>pf", "<cmd>Telescope find_files<cr>", desc = "Find files in project" },
+			{ "<leader>ps", "<cmd>Telescope live_grep<cr>", desc = "Telescope live grep" },
+			{ "<leader>bb", "<cmd>Telescope buffers<cr>", desc = "Telescope buffers" },
+			{ "<leader>hh", "<cmd>Telescope help_tags<cr>", desc = "Telescope help" },
 		},
 
 		opts = {
@@ -15,14 +19,6 @@ return {
 				file_ignore_patterns = { "node_modules", ".git", ".next" },
 			},
 		},
-
-		config = function()
-			local builtin = require("telescope.builtin")
-			vim.keymap.set("n", "<leader>pf", builtin.find_files, { desc = "Telescope find files" })
-			vim.keymap.set("n", "<leader>ps", builtin.live_grep, { desc = "Telescope live grep" })
-			vim.keymap.set("n", "<leader>bb", builtin.buffers, { desc = "Telescope buffers" })
-			vim.keymap.set("n", "<leader>hh", builtin.help_tags, { desc = "Telescope help tags" })
-		end,
 	},
 	{
 		"piersolenski/telescope-import.nvim",

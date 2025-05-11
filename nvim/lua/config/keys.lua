@@ -6,5 +6,5 @@ vim.keymap.set("n", "<leader>qq", "<cmd>qa<cr><esc>", { desc = "Quit" })
 
 -- clipboard
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "System yank" })
-vim.keymap.set("n", "<leader>p", [["+p]], { desc = "System paste" })
+vim.keymap.set("n", "<leader>]", [["+p]], { desc = "System paste" })
 
