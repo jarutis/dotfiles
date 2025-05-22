@@ -5,7 +5,7 @@ return {
         keys = 'etovxqpdygfblzhckisuran'
     },
   keys = {
-    { "<leader><leader>", "<cmd>HopWord<cr>" },
+    { "<leader><leader>", "<cmd>HopChar1<cr>" },
   },
 }
 

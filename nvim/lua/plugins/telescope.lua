@@ -12,6 +12,8 @@ return {
 			{ "<leader>ps", "<cmd>Telescope live_grep<cr>", desc = "Telescope live grep" },
 			{ "<leader>bb", "<cmd>Telescope buffers<cr>", desc = "Telescope buffers" },
 			{ "<leader>hh", "<cmd>Telescope help_tags<cr>", desc = "Telescope help" },
+			{ "<leader>ee", "<cmd>Telescope diagnostics<cr>", desc = "Telescope Errors" },
+			{ "<leader>gr", "<cmd>Telescope lsp_references<cr>", desc = "Telescope References" },
 		},
 
 		opts = {
