@@ -25,7 +25,7 @@ return {
     lazy = false,
     opts = {
       auto_install = true,
-      ensure_installed = { "ruff", "lua_ls", "bashls" },
+      ensure_installed = { "pyright", "lua_ls", "bashls" },
     },
   },
   {
@@ -34,8 +34,8 @@ return {
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
       local lspconfig = require("lspconfig")
+      lspconfig.pyright.setup({ capabilities = capabilities })
       lspconfig.lua_ls.setup({ capabilities = capabilities })
-      lspconfig.ruff.setup({ capabilities = capabilities })
       lspconfig.bashls.setup({ capabilities = capabilities })
     end,
   },
