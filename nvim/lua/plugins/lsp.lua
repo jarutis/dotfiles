@@ -25,7 +25,7 @@ return {
     lazy = false,
     opts = {
       auto_install = true,
-      ensure_installed = { "pyright", "lua_ls", "bashls" },
+      ensure_installed = { "pyright", "lua_ls", "bashls", "clangd", "neocmake" },
     },
   },
   {
@@ -34,9 +34,32 @@ return {
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
       local lspconfig = require("lspconfig")
+
       lspconfig.pyright.setup({ capabilities = capabilities })
       lspconfig.lua_ls.setup({ capabilities = capabilities })
       lspconfig.bashls.setup({ capabilities = capabilities })
+
+      -- C++ LSP (clangd)
+      lspconfig.clangd.setup({
+        capabilities = capabilities,
+        cmd = {
+          "clangd",
+          "--background-index",
+          "--clang-tidy",
+          "--header-insertion=iwyu",
+          "--completion-style=detailed",
+          "--function-arg-placeholders",
+          "--fallback-style=llvm",
+        },
+        init_options = {
+          usePlaceholders = true,
+          completeUnimported = true,
+          clangdFileStatus = true,
+        },
+      })
+
+      -- CMake LSP
+      lspconfig.neocmake.setup({ capabilities = capabilities })
     end,
   },
 }

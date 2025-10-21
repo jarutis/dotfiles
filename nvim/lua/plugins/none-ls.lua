@@ -22,6 +22,7 @@ return {
 				"eslint_d", -- ts/js linter
 				"shfmt",
 				"ruff",
+				"clang-format", -- C/C++ formatter
 			},
 			-- auto-install configured formatters & linters (with null-ls)
 			automatic_installation = true,
@@ -35,6 +36,10 @@ return {
 			formatting.terraform_fmt,
 			require("none-ls.formatting.ruff").with({ extra_args = { "--extend-select", "I" } }),
 			require("none-ls.formatting.ruff_format"),
+			formatting.clang_format.with({
+				filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
+				extra_args = { "--style=file", "--fallback-style=llvm" },
+			}),
 		}
 
 		local augroup = vim.api.nvim_create_augroup("LspFormatting", {})

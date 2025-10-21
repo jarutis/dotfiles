@@ -1,0 +1,36 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C++ Debug (codelldb)",
+      "type": "codelldb",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/${fileBasenameNoExtension}",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": false,
+      "preLaunchTask": "build-cpp"
+    },
+    {
+      "name": "C++ Debug with Args",
+      "type": "codelldb",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/main",
+      "args": ["arg1", "arg2"],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": false,
+      "preLaunchTask": "build-cpp"
+    },
+    {
+      "name": "Attach to Process",
+      "type": "codelldb",
+      "request": "attach",
+      "program": "${workspaceFolder}/build/${fileBasenameNoExtension}",
+      "processId": "${command:pickProcess}"
+    }
+  ]
+}
