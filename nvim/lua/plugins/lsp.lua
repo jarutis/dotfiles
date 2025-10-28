@@ -25,7 +25,7 @@ return {
     lazy = false,
     opts = {
       auto_install = true,
-      ensure_installed = { "pyright", "lua_ls", "bashls", "clangd", "neocmake" },
+      ensure_installed = { "pyright", "lua_ls", "bashls", "clangd", "neocmake", "gopls" },
     },
   },
   {
@@ -60,6 +60,20 @@ return {
 
       -- CMake LSP
       lspconfig.neocmake.setup({ capabilities = capabilities })
+
+      -- Go LSP (gopls)
+      lspconfig.gopls.setup({
+        capabilities = capabilities,
+        settings = {
+          gopls = {
+            analyses = {
+              unusedparams = true,
+            },
+            staticcheck = true,
+            gofumpt = true,
+          },
+        },
+      })
     end,
   },
 }

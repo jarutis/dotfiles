@@ -24,7 +24,7 @@ return {
 
     -- Mason DAP for automatic adapter installation
     require("mason-nvim-dap").setup({
-      ensure_installed = { "codelldb" },
+      ensure_installed = { "codelldb", "delve" },
       automatic_installation = true,
       handlers = {},
     })
@@ -65,10 +65,34 @@ return {
     -- C uses same config as C++
     dap.configurations.c = dap.configurations.cpp
 
+    -- Go Debug Configuration (Delve)
+    dap.configurations.go = {
+      {
+        type = "delve",
+        name = "Debug",
+        request = "launch",
+        program = "${file}",
+      },
+      {
+        type = "delve",
+        name = "Debug test",
+        request = "launch",
+        mode = "test",
+        program = "${file}",
+      },
+      {
+        type = "delve",
+        name = "Debug test (go.mod)",
+        request = "launch",
+        mode = "test",
+        program = "./${relativeFileDirname}",
+      },
+    }
+
     -- Load VSCode launch.json if it exists
     local vscode_ok, vscode = pcall(require, "dap.ext.vscode")
     if vscode_ok then
-      vscode.load_launchjs(nil, { codelldb = { "c", "cpp" } })
+      vscode.load_launchjs(nil, { codelldb = { "c", "cpp" }, delve = { "go" } })
     end
 
     dap.listeners.before.attach.dapui_config = function()

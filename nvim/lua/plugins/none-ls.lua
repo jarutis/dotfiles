@@ -23,6 +23,9 @@ return {
 				"shfmt",
 				"ruff",
 				"clang-format", -- C/C++ formatter
+				"gofumpt", -- Go formatter (stricter than gofmt)
+				"goimports-reviser", -- Go imports formatter
+				"golangci-lint", -- Go linter
 			},
 			-- auto-install configured formatters & linters (with null-ls)
 			automatic_installation = true,
@@ -40,6 +43,10 @@ return {
 				filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
 				extra_args = { "--style=file", "--fallback-style=llvm" },
 			}),
+			-- Go formatters and linters
+			formatting.gofumpt,
+			formatting.goimports_reviser,
+			diagnostics.golangci_lint,
 		}
 
 		local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
